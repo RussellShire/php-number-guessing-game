@@ -5,8 +5,8 @@ $correct_guesses = 0;
 $guess_high = 0;
 $guess_low = 0;
 
-echo "I'm going to think of numbers between 1 and 10 (inclusive).\n
-Do you think you can guess correctly?\n";
+echo "I'm going to think of a number between 1 and 10.\n
+Do you think you can guess what it is correctly?\n";
 
 function guessNumber(){
   global $guess_high, $guess_low, $correct_guesses, $play_count;
@@ -44,7 +44,12 @@ function guessNumber(){
 function playAgain(){
   global $play_count;
 
-  $play_again = readline("Play again? (Y/N):");
+  $play_again = readline("\nPlay again? (Y/N):");
+
+  if(strtolower($play_again) !== "y" && strtolower($play_again) !== "n"){
+    $play_again = readline("\nInvalid input, play again? (Y/N):");
+  }
+
   $play_again = strtolower($play_again) === 'y'? TRUE : FALSE;
 
   if($play_again){
