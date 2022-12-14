@@ -42,13 +42,17 @@ function guessNumber(){
 };
 
 function playAgain(){
+  global $play_count;
+
   $play_again = readline("Play again? (Y/N):");
   $play_again = strtolower($play_again) === 'y'? TRUE : FALSE;
 
   if($play_again){
     guessNumber();
-  } else {
+  } elseif ($play_count === 0) {
     return;
+  } else {
+    endScore();
   }
 }
 
@@ -61,13 +65,16 @@ function resetGame(){
   $guess_low = 0;
 }
 
+function endScore(){
+  global $guess_high, $guess_low, $correct_guesses, $play_count;
+
+  $correct_percent = round(($correct_guesses/$play_count)*100) . "%";
+
+  echo "You played ${play_count} times and had ${correct_guesses} correct guesses. \n";
+  echo "That's ${correct_percent}\n";
+  echo $guess_high >= $guess_low ? "You tended to guess high. \n" : "You tended to guess low. \n";
+  resetGame();
+  playAgain();
+}
+
 guessNumber();
-
-$correct_percent = round(($correct_guesses/$play_count)*100) . "%";
-
-echo "You played ${play_count} times and had ${correct_guesses} correct guesses. \n";
-echo "That's ${correct_percent}\n";
-echo $guess_high >= $guess_low ? "You tended to guess high. \n" : "You tended to guess low. \n";
-
-resetGame();
-playAgain();
