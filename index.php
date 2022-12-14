@@ -52,6 +52,15 @@ function playAgain(){
   }
 }
 
+function resetGame(){
+  global $guess_high, $guess_low, $correct_guesses, $play_count;
+  
+  $play_count = 0;
+  $correct_guesses = 0;
+  $guess_high = 0;
+  $guess_low = 0;
+}
+
 guessNumber();
 
 $correct_percent = round(($correct_guesses/$play_count)*100) . "%";
@@ -59,3 +68,6 @@ $correct_percent = round(($correct_guesses/$play_count)*100) . "%";
 echo "You played ${play_count} times and had ${correct_guesses} correct guesses. \n";
 echo "That's ${correct_percent}\n";
 echo $guess_high >= $guess_low ? "You tended to guess high. \n" : "You tended to guess low. \n";
+
+resetGame();
+playAgain();
