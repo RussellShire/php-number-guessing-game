@@ -13,7 +13,10 @@ function guessNumber(){
   $play_count++ ;
 
   $rand_number = rand(1,10);
-  echo "\nOkay, I'm thinking of a number, can you guess it?\n";
+
+  $join = $play_count > 1 ? "another" : "a";
+
+  echo "\nOkay, I'm thinking of ${join} number, can you guess it?\n";
   $guess = readline(">> ");
   $guess = intval($guess);
 
@@ -34,6 +37,11 @@ function guessNumber(){
   
   echo "In round ${play_count} the number was ${rand_number} and you guessed ${result} \n";
 
+  playAgain();
+  
+};
+
+function playAgain(){
   $play_again = readline("Play again? (Y/N):");
   $play_again = strtolower($play_again) === 'y'? TRUE : FALSE;
 
@@ -42,11 +50,11 @@ function guessNumber(){
   } else {
     return;
   }
-};
+}
 
 guessNumber();
 
-$correct_percent =  round(($correct_guesses/$play_count)*100) . "%";
+$correct_percent = round(($correct_guesses/$play_count)*100) . "%";
 
 echo "You played ${play_count} times and had ${correct_guesses} correct guesses. \n";
 echo "That's ${correct_percent}\n";

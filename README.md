@@ -18,6 +18,7 @@ https://russellshire.github.io/php-number-guessing-game/ -->
 # Optional To-Do:
 
 - Currently running in terminal, rewrite for browser
+- Handle if the number of high guesses is the same as the number of low guesses
 - Give hints, ie. 'it's higher than your last guess'
 - Customise responses depending on incorrect responses ie. 'oof, that was close', or 'you were miles off!'
 
