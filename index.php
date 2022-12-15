@@ -1,6 +1,8 @@
 <?php
 
 include "play_again.php";
+include "end_score.php";
+
 
 $play_count = 0;
 $correct_guesses = 0;
@@ -18,7 +20,7 @@ function guessNumber(){
 
   $join = $play_count > 1 ? "another" : "a";
 
-  echo "\nOkay, I'm thinking of ${join} number, can you guess it?\n";
+  echo "\nOkay, I'm thinking of {$join} number, can you guess it?\n";
   $guess = readline(">> ");
   $guess = intval($guess);
 
@@ -27,7 +29,7 @@ function guessNumber(){
     $guess = intval($guess);
   }
 
-  $result = $guess === $rand_number ? "correctly" : "${guess} incorrectly";
+  $result = $guess === $rand_number ? "correctly" : "{$guess} incorrectly";
 
   if($guess === $rand_number){
     $correct_guesses++;
@@ -37,7 +39,7 @@ function guessNumber(){
     $guess_low++;
   }
   
-  echo "In round ${play_count} the number was ${rand_number} and you guessed ${result} \n";
+  echo "In round {$play_count} the number was {$rand_number} and you guessed {$result} \n";
 
   playAgain();
   
@@ -50,18 +52,6 @@ function resetGame(){
   $correct_guesses = 0;
   $guess_high = 0;
   $guess_low = 0;
-}
-
-function endScore(){
-  global $guess_high, $guess_low, $correct_guesses, $play_count;
-
-  $correct_percent = round(($correct_guesses/$play_count)*100) . "%";
-
-  echo "You played ${play_count} times and had ${correct_guesses} correct guesses. \n";
-  echo "That's ${correct_percent}\n";
-  echo $guess_high >= $guess_low ? "You tended to guess high. \n" : "You tended to guess low. \n";
-  resetGame();
-  playAgain();
 }
 
 guessNumber();
