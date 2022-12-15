@@ -2,7 +2,7 @@
 
 include "play_again.php";
 include "end_score.php";
-
+include "reset_game.php";
 
 $play_count = 0;
 $correct_guesses = 0;
@@ -44,14 +44,5 @@ function guessNumber(){
   playAgain();
   
 };
-
-function resetGame(){
-  global $guess_high, $guess_low, $correct_guesses, $play_count;
-  
-  $play_count = 0;
-  $correct_guesses = 0;
-  $guess_high = 0;
-  $guess_low = 0;
-}
 
 guessNumber();
