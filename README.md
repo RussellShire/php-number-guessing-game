@@ -24,7 +24,7 @@ https://russellshire.github.io/php-number-guessing-game/ -->
 
 # Usage
 
-Tested and working Decemeber 2022
+Tested and working on PHP 8.2.0 Decemeber 2022
 
 ### Run
 
