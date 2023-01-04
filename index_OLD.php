@@ -1,4 +1,3 @@
-<html>
 <?php
 
 include "play_again.php";
@@ -10,11 +9,11 @@ $correct_guesses = 0;
 $guess_high = 0;
 $guess_low = 0;
 
-$message = "I'm going to think of a number between 1 and 10.\n
+echo "I'm going to think of a number between 1 and 10.\n
 Do you think you can guess what it is correctly?\n";
 
 function guessNumber(){
-  global $guess, $guess_high, $guess_low, $correct_guesses, $play_count;
+  global $guess_high, $guess_low, $correct_guesses, $play_count;
   $play_count++ ;
 
   $rand_number = rand(1,10);
@@ -46,16 +45,4 @@ function guessNumber(){
   
 };
 
-// guessNumber();
-?>
-<body>
-<h1>Guess the number</h1>
-<div>
-  <?= guessNumber(); ?>
-</div>
-<div>
-  <?= $guess ?>
-</div>
-
-</body>
-</html>
+guessNumber();
