@@ -31,10 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   guessNumber();
   endScore();
   
-  // echo $_POST["counter"];
-  if(array_key_exists('Reset', $_POST)) {
-    resetGame();
-  }
+  // if(array_key_exists('Reset', $_POST)) {
+  //   resetGame();
+  // }
   // print_r($_POST);
 
 }
@@ -56,9 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p>That's <?= endScore(); ?></p>
 <?php endif; ?>
 
-<form method="post">
+<!-- <form method="post">
   <input type="submit" name="reset" value="Reset" />
-</form>
+</form> -->
 
 </body>
 </html>
