@@ -7,7 +7,8 @@ include "end_score.php";
 include "reset_game.php";
 include "game-loop.php";
 
-$play_count = 1;
+
+$play_count = 0;
 $correct_guesses = 0;
 $guess_high = 0;
 $guess_low = 0;
@@ -22,8 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $guess = intval($guess);
 
   $play_count = trim(htmlspecialchars($_POST["counter"]));
+  $correct_guesses = trim(htmlspecialchars($_POST["correct"]));
 
   guessNumber();
+  endScore();
 }
 
 ?>
@@ -36,10 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </label>
   <input name="input" type="number" value="<?= $guess ?>" />
   <input name="counter" type="hidden" value="<?= $play_count ?>" />
+  <input name="correct" type="hidden" value="<?= $correct_guesses ?>" />
   <button type="submit">submit</button>
 </form>
 <!-- <p><?= $guess ?></p>
 <p><?= gettype($guess) ?></p> -->
-
 </body>
 </html>

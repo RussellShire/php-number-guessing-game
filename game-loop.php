@@ -26,7 +26,7 @@ function guessNumber(){
         $guess_low++;
     }
   
-    $message = "In round {$_POST["counter"]} I was thinking of {$rand_number} and you guessed {$result} \n";
+    $message = "In round {$play_count} I was thinking of {$rand_number} and you guessed {$result} \n";
 
 //   playAgain();
   
