@@ -2,16 +2,17 @@
 <body>
 <?php
 
-include "play_again.php";
+// include "play_again.php";
+// include "reset_game.php";
 include "end_score.php";
-include "reset_game.php";
 include "game-loop.php";
 
 $play_count = 0;
 $correct_guesses = 0;
+$guess = '';
+
 // $guess_high = 0;
 // $guess_low = 0;
-$guess = '';
 
 $message = "I'm going to think of a number between 1 and 10.\n
 Do you think you can guess what it is correctly?\n";
@@ -43,8 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 
 <?php if($play_count > 0) : ?>
-  <p>You've played <?=$play_count?> times and had <?=$correct_guesses?> correct guesses.</p>
-  <p>That's <?=endScore();?></p>
+  <p>You've played <?=$play_count?> times and had <?= $correct_guesses ?> correct guesses.</p>
+  <p>That's <?= endScore(); ?></p>
 <?php endif; ?>
 
 </body>
