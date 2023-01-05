@@ -1,61 +1,45 @@
 <html>
+<body>
 <?php
 
 include "play_again.php";
 include "end_score.php";
 include "reset_game.php";
+include "game-loop.php";
 
-$play_count = 0;
+$play_count = 1;
 $correct_guesses = 0;
 $guess_high = 0;
 $guess_low = 0;
+$guess = '';
+// $error_message = '';
 
 $message = "I'm going to think of a number between 1 and 10.\n
 Do you think you can guess what it is correctly?\n";
 
-function guessNumber(){
-  global $guess, $guess_high, $guess_low, $correct_guesses, $play_count;
-  $play_count++ ;
-
-  $rand_number = rand(1,10);
-
-  $join = $play_count > 1 ? "another" : "a";
-
-  echo "\nOkay, I'm thinking of {$join} number, can you guess it?\n";
-  $guess = readline(">> ");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $guess =  trim(htmlspecialchars($_POST["input"]));
   $guess = intval($guess);
 
-  if($guess > 10 || $guess <= 0){
-    $guess = readline("That was an invalid guess, try again between 1-10: ");
-    $guess = intval($guess);
-  }
+  $play_count = trim(htmlspecialchars($_POST["counter"]));
 
-  $result = $guess === $rand_number ? "correctly" : "{$guess} incorrectly";
+  guessNumber();
+}
 
-  if($guess === $rand_number){
-    $correct_guesses++;
-  } elseif($guess > $rand_number){
-    $guess_high++;
-  } else {
-    $guess_low++;
-  }
-  
-  echo "In round {$play_count} the number was {$rand_number} and you guessed {$result} \n";
-
-  playAgain();
-  
-};
-
-// guessNumber();
 ?>
-<body>
+
+
 <h1>Guess the number</h1>
-<div>
-  <?= guessNumber(); ?>
-</div>
-<div>
-  <?= $guess ?>
-</div>
+<form method="post">
+  <label for="input">
+    <?= $message ?>
+  </label>
+  <input name="input" type="number" value="<?= $guess ?>" />
+  <input name="counter" type="hidden" value="<?= $play_count ?>" />
+  <button type="submit">submit</button>
+</form>
+<!-- <p><?= $guess ?></p>
+<p><?= gettype($guess) ?></p> -->
 
 </body>
 </html>
