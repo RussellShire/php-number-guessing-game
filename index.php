@@ -3,7 +3,7 @@
 <?php
 
 // include "play_again.php";
-// include "reset_game.php";
+include "reset_game.php";
 include "end_score.php";
 include "game-loop.php";
 
@@ -17,6 +17,7 @@ $guess = '';
 $message = "I'm going to think of a number between 1 and 10.\n
 Do you think you can guess what it is correctly?\n";
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $guess =  trim(htmlspecialchars($_POST["input"]));
   $guess = intval($guess);
@@ -29,6 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   guessNumber();
   endScore();
+  
+  // echo $_POST["counter"];
+  if(array_key_exists('Reset', $_POST)) {
+    resetGame();
+  }
+  // print_r($_POST);
+
 }
 ?>
 
@@ -47,6 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p>You've played <?=$play_count?> times and had <?= $correct_guesses ?> correct guesses.</p>
   <p>That's <?= endScore(); ?></p>
 <?php endif; ?>
+
+<form method="post">
+  <input type="submit" name="reset" value="Reset" />
+</form>
 
 </body>
 </html>
