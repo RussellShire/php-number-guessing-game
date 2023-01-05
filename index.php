@@ -7,13 +7,11 @@ include "end_score.php";
 include "reset_game.php";
 include "game-loop.php";
 
-
 $play_count = 0;
 $correct_guesses = 0;
-$guess_high = 0;
-$guess_low = 0;
+// $guess_high = 0;
+// $guess_low = 0;
 $guess = '';
-// $error_message = '';
 
 $message = "I'm going to think of a number between 1 and 10.\n
 Do you think you can guess what it is correctly?\n";
@@ -23,14 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $guess = intval($guess);
 
   $play_count = trim(htmlspecialchars($_POST["counter"]));
+  $play_count = intval($play_count);
+
   $correct_guesses = trim(htmlspecialchars($_POST["correct"]));
+  $correct_guesses = intval($correct_guesses);
 
   guessNumber();
   endScore();
 }
-
 ?>
-
 
 <h1>Guess the number</h1>
 <form method="post">
@@ -42,7 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <input name="correct" type="hidden" value="<?= $correct_guesses ?>" />
   <button type="submit">submit</button>
 </form>
-<!-- <p><?= $guess ?></p>
-<p><?= gettype($guess) ?></p> -->
+
+<?php if($play_count > 0) : ?>
+  <p>You've played <?=$play_count?> times and had <?=$correct_guesses?> correct guesses.</p>
+  <p>That's <?=endScore();?></p>
+<?php endif; ?>
+
 </body>
 </html>

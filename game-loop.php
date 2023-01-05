@@ -1,6 +1,4 @@
 <?php
-
-
 function guessNumber(){
     global $guess, $message, $guess_high, $guess_low, $correct_guesses, $play_count;
 
@@ -27,8 +25,5 @@ function guessNumber(){
     }
   
     $message = "In round {$play_count} I was thinking of {$rand_number} and you guessed {$result} \n";
-
-//   playAgain();
-  
 };
 ?>
