@@ -18,7 +18,7 @@ $message = "I'm going to think of a number between 1 and 10.\n
 Do you think you can guess what it is correctly?\n";
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["counter"])) {
   $guess =  trim(htmlspecialchars($_POST["input"]));
   $guess = intval($guess);
 
@@ -31,11 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   guessNumber();
   endScore();
   
-  // if(array_key_exists('Reset', $_POST)) {
-  //   resetGame();
-  // }
-  // print_r($_POST);
-
+  if(isset($_POST['reset']) && $_POST['reset'] === true) {
+    resetGame();
+    $_POST['reset'] = false;
+  }
 }
 ?>
 
@@ -55,9 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p>That's <?= endScore(); ?></p>
 <?php endif; ?>
 
-<!-- <form method="post">
-  <input type="submit" name="reset" value="Reset" />
-</form> -->
+<form method="post">
+  <input type="hidden" name="reset" value=True />
+  <button type="submit">Reset</button>
+</form>
 
 </body>
 </html>
