@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["counter"])) {
 <!-- Results display -->
 <?php if($play_count > 0) : ?>
   <p>You've played <?=$play_count?> times and had <?= $correct_guesses ?> correct guesses.</p>
-  <p>That's <?= endScore(); ?></p>
+  <p>That's <?= endScore(); ?> correct.</p>
 <?php endif; ?>
 
 <!-- Reset button form -->

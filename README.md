@@ -1,6 +1,7 @@
 # NUMBER GUESSING GAME
 
-A beginner PHP project. Users try to guess a randomly generated number, they play a number of rounds and then receive feedback on how successful they were.
+A PHP project where users try to guess a randomly generated number and receive feedback on how successful they were.
+Originally written for the terminal in December 2022 but refactored for browser in January 2023.
 
 <!-- #Hosted
 https://russellshire.github.io/php-number-guessing-game/ -->
@@ -9,22 +10,26 @@ https://russellshire.github.io/php-number-guessing-game/ -->
 
 - User is welcomed, a number is randomly generated and they are invited to guess it
 - Invalid inputs should be handled
-- Number of plays, Correct guesses and whether guesses are high or low are saved
-- Users are invited to play again
-- When users stop playing they should be invited to play another round
-- When users decide not to choose another round they should recieve feedback on their performance
-- Users should then be invited to play again or terminate the game
+- Number of plays, Correct guesses are saved
+- Users can immediately play again
+- Users automatically recieve feedback on their performance: rounds played, correct guesses and percentage of correct
+- Users can Reset the game, resetting rounds played, correct guesses and percentage of correct answers
 
 # Optional To-Do:
 
-- Currently running in terminal, rewrite for browser
-- Handle if the number of high guesses is the same as the number of low guesses
-- Give hints, ie. 'it's higher than your last guess'
+~~- Currently running in terminal, rewrite for browser~~
+
+- Add CSS styling
+- Ensure layout is mobile optimised
+- Add a 'celebration' animation for correct guesses to make it more of an event
 - Customise responses depending on incorrect responses ie. 'oof, that was close', or 'you were miles off!'
+- Whether guesses are high or low should be saved
+- Handle if the number of high guesses is the same as the number of low guesses
+- Give hints, ie. 'it's higher than your last guess' to add an element of skill
 
 # Usage
 
-Tested and working on PHP 8.2.0 Decemeber 2022
+Tested and working on PHP 8.2.0 January 2023
 
 ### Run
 
