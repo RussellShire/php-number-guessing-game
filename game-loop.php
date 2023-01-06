@@ -2,9 +2,6 @@
 function guessNumber(){
     global $guess, $message, $guess_high, $guess_low, $correct_guesses, $play_count;
 
-    // $join = $_POST["counter"] > 1 ? "another" : "a";
-    // $message = "\nOkay, I'm thinking of {$join} number, can you guess it?\n";
-
     if($guess > 10 || $guess <= 0){
         $message = ("That was an invalid guess, try again between 1-10: ");
         return;
@@ -23,7 +20,6 @@ function guessNumber(){
     } else {
         $guess_low++;
     }
-  
-    $message = "In round {$play_count} I was thinking of {$rand_number} and you guessed {$result} \n";
-};
-?>
+    
+    $message = "In round {$play_count} I was thinking of {$rand_number} and you guessed {$result}";
+}
